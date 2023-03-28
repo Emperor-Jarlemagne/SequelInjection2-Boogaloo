@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&family=Open+Sans&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    /* Define custom utilities here */
+  }
+
+@layer base {
+    body {
+        font-family: 'Open Sans', sans-serif;
+    }
+    li {
+        @apply font-montserrat-subrayada;
+        @apply px-4;
+        @apply cursor-pointer;
+      }
+      li:hover {
+      }
+    h1,
+    h2,
+    p {
+        font-family: 'Open Sans', sans-serif;
+        @apply leading-2;
+    }
+}
+
+h1 span {
+    line-height: 1.25;
+  }
+
+  .background {
+    background-image: url('./static/content/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #1e3a8a;
+    /* linear-gradient with a semi-transparent blue color */
+    background-image: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('./static/content/background.jpg');
+  }
+
+.font-montserrat-subrayada {
+    font-family: 'Montserrat Subrayada', sans-serif;
+  }
+
+.content-div {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+}
+
+.content-div:hover {
+    background-image: linear-gradient(
+        to right,
+        rgba(112, 157, 255, 0.8),
+        hsla(242, 74%, 61%, 0.8)   
+    )!important;
+}
+
+.text-animate {
+    display: inline-block;
+    transform: translateY(0.5em) rotate(0deg);
+    opacity: 0;
+    color: #ff69b4;
+  }
+  
+  .text-animate-hover {
+    transform: translateY(0) rotate(360deg);
+    opacity: 1;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    color: #ff69b4;
+  }
+
+  .text-animate-hover:hover {
+    transform: translateY(-0.2em);
+  }
+
+  .stage-icon-cont {
+    perspective: 1200px;
+    height: 400px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .iconspinner {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    animation: spin 10s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotateX(0deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(360deg) rotateZ(360deg);
+    }
+  }
+  
+  .iconspinner .icon1 {
+    transform: rotateX(0deg) rotateZ(0deg) translateZ(150px);
+  }
+  
+  .iconspinner .icon2 {
+    transform: rotateX(40deg) rotateZ(40deg) translateZ(150px);
+  }
+  
+  .iconspinner .icon3 {
+    transform: rotateX(80deg) rotateZ(80deg) translateZ(150px);
+  }
+  
+  .iconspinner .icon4 {
+    transform: rotateX(120deg) rotateZ(120deg) translateZ(150px);
+  }
+  
+  .iconspinner .icon5 {
+    transform: rotateX(160deg) rotateZ(160deg) translateZ(150px);
+  }
+  
+  .iconspinner .icon6 {
+    transform: rotateX(200deg) rotateZ(200deg) translateZ(150px);
+  }
+  
+  .iconspinner .icon7 {
+    transform: rotateX(240deg) rotateZ(240deg) translateZ(150px);
+  }
+  
+  .iconspinner .icon8 {
+    transform: rotateX(280deg) rotateZ(280deg) translateZ(150px);
+  }
+  
+  .iconspinner .icon9 {
+    transform: rotateX(320deg) rotateZ(320deg) translateZ(150px);
+  }
+  
+  .stage-icon-cont div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+  }
