@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/SequelInjection2-Boogaloo/static/css/main.31c9d314.css",
-    "main.js": "/SequelInjection2-Boogaloo/static/js/main.398e8bc9.js",
+    "main.js": "/SequelInjection2-Boogaloo/static/js/main.6f067b53.js",
     "static/media/background.jpg": "/SequelInjection2-Boogaloo/static/media/background.fc50740b3d469fdae429.jpg",
     "index.html": "/SequelInjection2-Boogaloo/index.html",
     "main.31c9d314.css.map": "/SequelInjection2-Boogaloo/static/css/main.31c9d314.css.map",
-    "main.398e8bc9.js.map": "/SequelInjection2-Boogaloo/static/js/main.398e8bc9.js.map"
+    "main.6f067b53.js.map": "/SequelInjection2-Boogaloo/static/js/main.6f067b53.js.map"
   },
   "entrypoints": [
     "static/css/main.31c9d314.css",
-    "static/js/main.398e8bc9.js"
+    "static/js/main.6f067b53.js"
   ]
 }
