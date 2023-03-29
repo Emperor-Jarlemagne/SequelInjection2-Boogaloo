@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { Link, NavLink } from 'react-router-dom'
+import JariImage from '../static/content/8BitJari.png'
 
 const Navbar = () => {
     const [nav, setNav] = useState(false)
@@ -16,7 +17,7 @@ const Navbar = () => {
   return (
       <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300">
         <Link to="/">
-          <img src={'../static/content/8BitJari.jpg'} style={{ width: '40px'}} alt="It's Me!" />
+          <img src={JariImage} style={{ width: '40px'}} alt="It's Me!" />
         </Link>
 
     {/* Main Menu */}
