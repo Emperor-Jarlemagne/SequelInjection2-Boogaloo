@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faHome,
@@ -31,6 +31,15 @@ const Navbar = () => {
       console.log(error)
     }
   }
+
+  useEffect(() => {
+    const cleanup = () => {
+      if (typeof scroller.destory === 'function') {
+        scroller.destroy()
+      }
+    }
+    return cleanup
+  },)
 
   return (
       <div id="navbar" className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#db7b48] text-gray-300">

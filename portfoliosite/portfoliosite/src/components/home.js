@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef} from 'react'
 import { Link as LinkRouter } from 'react-router-dom'
 import AnimatedLetters from './letters'
 import { HiArrowNarrowRight } from 'react-icons/hi'
@@ -6,9 +6,16 @@ import * as Scroll from 'react-scroll'
 
 const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
-  const nameArray = 'Jari Salminen'.split('')
-  const jobArray = 'Junior Full Stack Developer'.split('')
   const Element = Scroll.Element
+  const elementRef = useRef(null)
+
+  useEffect(() => {
+    let currentElementRef = elementRef.current
+    currentElementRef = Element('home')
+    return () => {
+      currentElementRef.destroy()
+    };
+  }, [Element])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -17,8 +24,15 @@ const Home = () => {
     return () => clearTimeout(timer)
   }, [])
 
+  useEffect(() => {
+    const currentElementRef = elementRef.current
+    return () => {
+      currentElementRef.destroy()
+    }
+  }, [])
+
  return (
-  <Element id='home' name='home' className="w-full h-screen bg-[#fffdf0]">
+  <Element ref={elementRef} id='home' name='home' className="w-full h-screen bg-[#fffdf0]">
     {/* Main Container */}
     <div className='max-w-[1000px] ml-20 mr-10 px-8 flex flex-col justify-center h-full text-right'>
     <h1 className="text-4xl sm:text-7xl font-bold text-[#ccd6f6]">
@@ -29,13 +43,13 @@ const Home = () => {
             <br />
             <AnimatedLetters
               letterClass={letterClass}
-              strArray={nameArray}
+              strArray={'Jari Salminen'.split('')}
               idx={15}
             />
             <br />
             <AnimatedLetters
               letterClass={letterClass}
-              strArray={jobArray}
+              strArray={'Junior Full Stack Developer'.split('')}
               idx={22}
             />
     </h1>

@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import emailjs from 'emailjs-com'
 import AnimatedLetters from './letters'
 import { ToastContainer, toast } from 'react-toastify'
@@ -9,8 +8,16 @@ import * as Scroll from 'react-scroll'
 const Contact = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
   const form = useRef()
-  const contactArray = 'Contact Me'.split('')
   const Element = Scroll.Element
+  const elementRef = useRef(null)
+
+  useEffect(() => {
+    let currentElementRef = elementRef.current
+    currentElementRef = Element('contact')
+    return () => {
+      currentElementRef.destroy()
+    };
+  }, [Element])
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -19,6 +26,13 @@ const Contact = () => {
     return () => {
       clearTimeout(timeout)
     }
+    }, [])
+
+    useEffect(() => {
+      const currentElementRef = elementRef.current
+      return () => {
+        currentElementRef.destroy()
+      }
     }, [])
 
   const sendEmail = (e) => {
@@ -72,19 +86,18 @@ const Contact = () => {
   }
 
   return (
-    <Element id="contact" name="name" className="w-full h-screen flex justify-center items-center p-4 bg-[#fffdf0]">
+    <Element ref={elementRef} id="contact" name="name" className="w-full h-screen flex justify-center items-center p-4 bg-[#fffdf0]">
       <div>
         <div className="ml-20 mr-10">
           <h1>
             <AnimatedLetters
               letterClass={letterClass}
-              strArray={contactArray}
+              strArray={'Contact Me'.split('')}
               idx={15}
             />
           </h1>
           <p className="text-4xl font-bold inline border-b-4 border-[#db7b48] text-[#53225a] leading-4">
             If you would like to get in contact, please do! <br />
-            I am looking for either short or long term contracts. <br />
             I'm looking for a Junior Full Stack position at a company
             that has challenging and diverse projects.
           </p>

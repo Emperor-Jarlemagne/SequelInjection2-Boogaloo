@@ -1,14 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import AnimatedLetters from './letters'
 import { data } from '../portfolio/examples'
 import * as Scroll from 'react-scroll'
 
 const Portfolio = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
-
-  const portfolioArray = 'Portfolio'.split('')
   const project = data
   const Element = Scroll.Element
+  const elementRef = useRef(null)
+
+  useEffect(() => {
+    let currentElementRef = elementRef.current
+    currentElementRef = Element('portfolio')
+    return () => {
+      currentElementRef.destroy()
+    };
+  }, [Element])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -17,9 +24,16 @@ const Portfolio = () => {
     return () => clearTimeout(timer)
   }, [])
 
+  useEffect(() => {
+    const currentElementRef = elementRef.current
+    return () => {
+      currentElementRef.destroy()
+    }
+  }, [])
+
   return (
     <>
-      <Element id='portfolio' name='portfolio' className='w-full md:h-screen bg-[#fffdf0] text-[#53225a]'>
+      <Element ref={elementRef} id='portfolio' name='portfolio' className='w-full md:h-screen bg-[#fffdf0] text-[#53225a]'>
       <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
         <div className='pb-8'>
           <p className='text-4xl font-bold inline border-b-4 text-gray-300 border-[#db7b48]'>
@@ -30,7 +44,7 @@ const Portfolio = () => {
           <h1>
             <AnimatedLetters
               letterClass={letterClass}
-              strArray={portfolioArray}
+              strArray={'Portfolio'.split('')}
               idx={15}
             />
             <br />

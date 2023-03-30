@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import {
   faCss3,
   faGitAlt,
@@ -15,9 +15,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as Scroll from 'react-scroll'
 
 const About = () => {
-  const aboutArray = 'THE RUNDOWN'.split('')
   const [letterClass, setLetterClass] = useState('text-animate')
   const Element = Scroll.Element
+  const elementRef = useRef(null)
+
+  useEffect(() => {
+    let currentElementRef = elementRef.current
+    currentElementRef = Element('about')
+    return () => {
+      currentElementRef.destroy()
+    };
+  }, [Element])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -26,9 +34,16 @@ const About = () => {
     return () => clearTimeout(timer)
   }, [])
 
+  useEffect(() => {
+    const currentElementRef = elementRef.current;
+    return () => {
+      currentElementRef.destroy()
+    }
+  }, [])
+
   return (
     <>
-      <Element id='about' name='about' className="w-full h-screen bg-[#fffdf0] text-[#53225a]">
+      <Element ref={elementRef} id='about' name='about' className="w-full h-screen bg-[#fffdf0] text-[#53225a]">
         <div className='flex flex-col justify-center items-center w-full h-full'>
         <div className='max-w-[1000px] w-full grid grid-cols-2 gap-8'>
           <div className='sm:text-right pb-8 pl-4'>
@@ -38,7 +53,7 @@ const About = () => {
           <h1 className="my-4">
             <AnimatedLetters
               letterClass={letterClass}
-              strArray={aboutArray}
+              strArray={'THE RUNDOWN'.split('')}
               idx={15}
               style={{ color: "#ccc", fontWeight: "bold" }}
             />

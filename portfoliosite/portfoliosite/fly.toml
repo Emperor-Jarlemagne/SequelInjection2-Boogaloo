@@ -9,6 +9,12 @@ processes = []
 [env]
   PORT = "8080"
 
+[build]
+  dockerfile = "Dockerfile"
+
+[deploy]
+  memory = "1000"
+
 [experimental]
   auto_rollback = true
 
@@ -37,3 +43,7 @@ processes = []
     interval = "15s"
     restart_limit = 0
     timeout = "2s"
+
+  [[statics]]
+    guest_path = "/app/build"
+    url_prefix = "/"
