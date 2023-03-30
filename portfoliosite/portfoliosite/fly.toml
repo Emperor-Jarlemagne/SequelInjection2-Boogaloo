@@ -1,4 +1,4 @@
-# fly.toml file generated for fullstackjari on 2023-03-28T21:07:42-07:00
+# fly.toml file generated for fullstackjari on 2023-03-30T12:03:52-07:00
 
 app = "fullstackjari"
 kill_signal = "SIGINT"
