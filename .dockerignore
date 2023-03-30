@@ -1,0 +1,27 @@
+# flyctl launch added from portfoliosite\portfoliosite\.gitignore
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+portfoliosite\portfoliosite\node_modules
+portfoliosite\portfoliosite\.pnp
+portfoliosite\portfoliosite\**\.pnp.js
+
+# testing
+portfoliosite\portfoliosite\coverage
+
+# production
+portfoliosite\portfoliosite\build
+
+# misc
+portfoliosite\portfoliosite\**\.DS_Store
+portfoliosite\portfoliosite\**\.env.local
+portfoliosite\portfoliosite\**\.env.development.local
+portfoliosite\portfoliosite\**\.env.test.local
+portfoliosite\portfoliosite\**\.env.production.local
+
+portfoliosite\portfoliosite\**\npm-debug.log*
+portfoliosite\portfoliosite\**\yarn-debug.log*
+portfoliosite\portfoliosite\**\yarn-error.log*
+
+portfoliosite\portfoliosite\**\.env
+fly.toml
