@@ -24,6 +24,5 @@ portfoliosite\portfoliosite\**\yarn-debug.log*
 portfoliosite\portfoliosite\**\yarn-error.log*
 
 portfoliosite\portfoliosite\**\.env
-fly.toml
 .env
 .gitignore

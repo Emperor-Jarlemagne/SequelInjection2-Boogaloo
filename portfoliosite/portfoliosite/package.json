@@ -25,12 +25,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "PORT 8080=react-scripts start",
+    "start": "PORT=8000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "flyctl deploy"
+    "deploy": "flyctl deploy",
+    "logs": "flyctl logs"
   },
   "eslintConfig": {
     "extends": [
