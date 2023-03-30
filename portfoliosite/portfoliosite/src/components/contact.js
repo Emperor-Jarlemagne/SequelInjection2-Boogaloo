@@ -4,11 +4,13 @@ import emailjs from 'emailjs-com'
 import AnimatedLetters from './letters'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import * as Scroll from 'react-scroll'
 
 const Contact = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
   const form = useRef()
   const contactArray = 'Contact Me'.split('')
+  const Element = Scroll.Element
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -70,7 +72,7 @@ const Contact = () => {
   }
 
   return (
-    <div class="background" className="w-full h-screen bg-[#0a192f] flex justify-center items-center p-4">
+    <Element id="contact" name="name" className="w-full h-screen flex justify-center items-center p-4 bg-[#fffdf0]">
       <div>
         <div className="ml-20 mr-10">
           <h1>
@@ -80,9 +82,11 @@ const Contact = () => {
               idx={15}
             />
           </h1>
-          <p className="text-4xl font-bold inline border-b-4 border-pink-600 text-gray-100 leading-4">
+          <p className="text-4xl font-bold inline border-b-4 border-[#db7b48] text-[#53225a] leading-4">
             If you would like to get in contact, please do! <br />
-            I am looking for either short or long term contracts.
+            I am looking for either short or long term contracts. <br />
+            I'm looking for a Junior Full Stack position at a company
+            that has challenging and diverse projects.
           </p>
           <div className="flex flex-col max-w-[600px] w-full mt-8">
             <form ref={form} onSubmit={sendEmail} style={{outline: 'none'}}>
@@ -120,7 +124,7 @@ const Contact = () => {
                 </li>
                 <li>
                   <input type="submit" 
-                  className="text-white border-2 hover:bg-pink-600 hover:border-pink-600 px-4 py-3 my-8 mx-auto flex items-center" 
+                  className="text-[#53225a] border-2 hover:bg-[#db7b48] hover:border-[#db7b48] px-4 py-3 my-8 mx-auto flex items-center" 
                   value="SEND" />
                 </li>
               </ul>
@@ -129,7 +133,7 @@ const Contact = () => {
           </div>
         </div>
     </div>
-    </div>
+    </Element>
   )
 }
 export default Contact

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import AnimatedLetters from './letters'
 import { data } from '../portfolio/examples'
+import * as Scroll from 'react-scroll'
 
 const Portfolio = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
 
   const portfolioArray = 'Portfolio'.split('')
   const project = data
+  const Element = Scroll.Element
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -17,13 +19,12 @@ const Portfolio = () => {
 
   return (
     <>
-      <div name='portfolio' class="background" className='w-full md:h-screen text-gray-300 bg-[#0a192f]'>
+      <Element id='portfolio' name='portfolio' className='w-full md:h-screen bg-[#fffdf0] text-[#53225a]'>
       <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
         <div className='pb-8'>
-          <p className='text-4xl font-bold inline border-b-4 text-gray-300 border-pink-600'>
-            Work
+          <p className='text-4xl font-bold inline border-b-4 text-gray-300 border-[#db7b48]'>
           </p>
-          <p className='py-6'> Check out some of my recent work</p>
+          <p className='py-6'> </p>
         </div>
         <div className="text-zone">
           <h1>
@@ -35,11 +36,7 @@ const Portfolio = () => {
             <br />
           </h1>
           <p>
-            I love learning new technologies and languages!
-          </p>
-          <p>
-            I'm looking for a Junior Full Stack position at a company
-            that has challenging and diverse projects.
+          Check out some of my recent work
           </p>
         </div>
 {/* container for projects */}
@@ -60,13 +57,13 @@ const Portfolio = () => {
       <div className="pt-8 text-center ">
         <a href={item.github}>
           <button className="text-center rounded-lg px-4 py-3 m-2
-                       bg-white text-gray-700 font-bold text-lg" >
+                       bg-white text-[#53225a] font-bold text-lg" >
             Code
           </button>
         </a>
         <a href={item.live}>
           <button className="text-center rounded-lg px-4 py-3 m-2
-                       bg-white text-gray-700 font-bold text-lg" >
+                       bg-white text-[#53225a] font-bold text-lg" >
             Live
           </button>
         </a>
@@ -76,7 +73,7 @@ const Portfolio = () => {
 ))}
 </div>
 </div>
-</div>
+</Element>
   </>
    )
 }

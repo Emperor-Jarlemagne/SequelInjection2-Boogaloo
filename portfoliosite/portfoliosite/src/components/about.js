@@ -12,10 +12,12 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import AnimatedLetters from './letters'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import * as Scroll from 'react-scroll'
 
 const About = () => {
-  const aboutArray = 'About Me'.split('')
+  const aboutArray = 'THE RUNDOWN'.split('')
   const [letterClass, setLetterClass] = useState('text-animate')
+  const Element = Scroll.Element
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -26,18 +28,19 @@ const About = () => {
 
   return (
     <>
-      <div name='about' class="background" className="w-full h-screen bg-[#0a192f] text-gray-300">
+      <Element id='about' name='about' className="w-full h-screen bg-[#fffdf0] text-[#53225a]">
         <div className='flex flex-col justify-center items-center w-full h-full'>
         <div className='max-w-[1000px] w-full grid grid-cols-2 gap-8'>
           <div className='sm:text-right pb-8 pl-4'>
-            <p className='text-4xl font-bold inline border-b-4 border-pink-600'>
+            <p className='text-4xl font-bold inline border-b-4 border-[#8892b0]'>
               About Me
             </p>
-          <h1>
+          <h1 className="my-4">
             <AnimatedLetters
               letterClass={letterClass}
               strArray={aboutArray}
               idx={15}
+              style={{ color: "#ccc", fontWeight: "bold" }}
             />
           </h1>
           <p>
@@ -94,7 +97,7 @@ const About = () => {
           </div>
           </div>
         </div>
-      </div>
+      </Element>
     </>
   )
 }

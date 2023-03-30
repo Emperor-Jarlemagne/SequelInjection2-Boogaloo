@@ -7,40 +7,58 @@ import {
   faScrewdriverWrench,
 } from '@fortawesome/free-solid-svg-icons'
 import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa'
-import { Link, NavLink } from 'react-router-dom'
-import JariImage from '../static/content/8BitJari.png'
+import { Link as NavLink, useNavigate } from 'react-router-dom'
+import { Link as ScrollLink } from 'react-scroll'
+import * as Scroll from 'react-scroll'
 
 const Navbar = () => {
     const [nav, setNav] = useState(false)
     const handleClick = () => setNav(!nav)
+    const scroller = Scroll.scroller
+    const navigate = useNavigate()
+
+  const scrollToElement = async (elementId) => {
+    try {
+      await navigate("/" + elementId)
+      console.log('Scrolling to ' + elementId)
+      await scroller.scrollTo(`#${elementId}`, {
+        duration: 500,
+        spy: true,
+        smooth: true,
+        offset: -75,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
-      <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300">
-        <Link to="/">
-          <img src={JariImage} style={{ width: '40px'}} alt="It's Me!" />
-        </Link>
+      <div id="navbar" className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#db7b48] text-gray-300">
+        <NavLink to="/">
+          <img src={'./assets/content/8BitJari.png'} style={{ width: '40px'}} alt="It's Me!" />
+        </NavLink>
 
     {/* Main Menu */}
         <ul className="hidden md:flex">
         <li>
-          <NavLink to="/" smooth="true" duration={500}>
+          <ScrollLink to='/' onClick={() => scrollToElement('home')}>
             Home
-          </NavLink>
+          </ScrollLink>
         </li>
         <li>
-          <NavLink to="/about" smooth="true" duration={500}>
+          <ScrollLink to='about' onClick={() => scrollToElement('about')}>
            About
-          </NavLink>
+          </ScrollLink>
         </li>
         <li>
-          <NavLink to="/portfolio" smooth="true" duration={500}>
+          <ScrollLink to='portfolio' onClick={() => scrollToElement('portfolio')}>
            Portfolio
-          </NavLink>
+          </ScrollLink>
         </li>
         <li>
-          <NavLink to="/contact" smooth="true" duration={500}>
+          <ScrollLink to='contact' onClick={() => scrollToElement('contact')}>
             Contact
-          </NavLink>
+          </ScrollLink>
           </li>
         </ul>
 
@@ -53,31 +71,31 @@ const Navbar = () => {
       <ul className={ !nav ? 'hidden'
             : 'absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center' }>
         <li className='py-6 text-4xl'>
-          <Link onClick={handleClick} to='home' smooth="true" duration={500}>
+          <NavLink onClick={handleClick} to='home'>
           <FontAwesomeIcon icon={faHome} color="#4d4d4e" />
-          </Link>
+          </NavLink>
         </li>
         <li className='py-6 text-4xl'>
-          <Link onClick={handleClick} to='about' smooth="true" duration={500}>
+          <NavLink onClick={handleClick} to='about'>
           <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
-          </Link>
+          </NavLink>
         </li>
         <li className='py-6 text-4xl'>
-          <Link onClick={handleClick} to='portfolio' smooth="true" duration={500}>
+          <NavLink onClick={handleClick} to='portfolio'>
           <FontAwesomeIcon icon={faScrewdriverWrench} color="#4d4d4e" />
-          </Link>
+          </NavLink>
         </li>
         <li className='py-6 text-4xl'>
-          <Link onClick={handleClick} to='contact' smooth="true" duration={500}>
+          <NavLink onClick={handleClick} to='contact'>
           <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
-          </Link>
+          </NavLink>
         </li>
     </ul>
 
     {/* Social Icons */}
     <div className='hidden md:flex fixed flex-col top-[35%] left-0'>
         <ul>
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-blue-600">
+          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#db7b48]">
             <a
               className="flex justify-between items-center w-full text-gray-300"
               href="https://www.linkedin.com/in/jari-sv-salminen/"
@@ -85,7 +103,7 @@ const Navbar = () => {
               <FaLinkedin size={50} color="#b9b9b9" />
             </a>
           </li>
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#333333]">
+          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#f7be17]">
             <a
               className="flex justify-between items-center w-full text-gray-300"
               href="https://github.com/Emperor-Jarlemagne"
@@ -93,12 +111,12 @@ const Navbar = () => {
               <FaGithub size={50} color="#b9b9b9" />
             </a>
           </li>
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#6fc2b0]">
+          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#f6e397]">
             <a
               className="flex justify-between items-center w-full text-gray-300"
               href="https://rerouting.tech"
             >
-              <img src={'.../static/favicon/favicon-32x32.png'} width="24" alt="rerouting podcast" />
+              <img src={'./assets/favicon/favicon-32x32.png'} width="24" alt="rerouting" />
             </a>
           </li>
         </ul>
@@ -106,5 +124,4 @@ const Navbar = () => {
       </div>
   )
 }
-
 export default Navbar

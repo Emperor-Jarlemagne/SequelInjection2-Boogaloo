@@ -32,13 +32,13 @@ h1 span {
   }
 
   .background {
-    background-image: url('./static/content/background.jpg');
+    background-image: url('./assets/content/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #1e3a8a;
+    background-color: #fffdf0;
     /* linear-gradient with a semi-transparent blue color */
-    background-image: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('./static/content/background.jpg');
+    background-image: linear-gradient(rgba(255, 253, 240, 0.8), rgba(255, 253, 240, 0.8)), url('./assets/content/background.jpg');
   }
 
 .font-montserrat-subrayada {
@@ -55,8 +55,8 @@ h1 span {
 .content-div:hover {
     background-image: linear-gradient(
         to right,
-        rgba(112, 157, 255, 0.8),
-        hsla(242, 74%, 61%, 0.8)   
+        rgba(219, 123, 72, 0.8),
+        hsla(41, 48%, 62%, 0.984)   
     )!important;
 }
 
@@ -64,14 +64,17 @@ h1 span {
     display: inline-block;
     transform: translateY(0.5em) rotate(0deg);
     opacity: 0;
-    color: #ff69b4;
+    animation: bounceIn;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    color: #53225a;
   }
   
   .text-animate-hover {
     transform: translateY(0) rotate(360deg);
     opacity: 1;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    color: #ff69b4;
+    color: #53225a;
   }
 
   .text-animate-hover:hover {

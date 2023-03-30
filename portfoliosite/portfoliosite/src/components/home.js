@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link as LinkRouter } from 'react-router-dom'
 import AnimatedLetters from './letters'
 import { HiArrowNarrowRight } from 'react-icons/hi'
+import * as Scroll from 'react-scroll'
 
 const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
   const nameArray = 'Jari Salminen'.split('')
   const jobArray = 'Junior Full Stack Developer'.split('')
+  const Element = Scroll.Element
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -16,7 +18,7 @@ const Home = () => {
   }, [])
 
  return (
-  <div name="home" class="background" className="w-full h-screen bg-[#0a192f]">
+  <Element id='home' name='home' className="w-full h-screen bg-[#fffdf0]">
     {/* Main Container */}
     <div className='max-w-[1000px] ml-20 mr-10 px-8 flex flex-col justify-center h-full text-right'>
     <h1 className="text-4xl sm:text-7xl font-bold text-[#ccd6f6]">
@@ -40,15 +42,14 @@ const Home = () => {
     <h2 className="text-4xl sm:text-7xl font-bold text-[#8892b0] mb-6">
       This is my portfolio page!
     </h2>
-    <Link to="/contact" className="text-gray-300 group border-2 px-6 py-3 my-2 flex items-center hover:bg-pink-600 hover:border-pink-600">
+    <LinkRouter to="contact" className="text-[#8892b0] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#db7b48] hover:border-[#db7b48]">
       CONTACT ME
     <span className='group-hover:rotate-90 duration-300'>
     <HiArrowNarrowRight className='ml-3 ' />
     </span>
-    </Link>
+    </LinkRouter>
     </div>
-  </div>
+  </Element>
  )
 }
-
 export default Home
