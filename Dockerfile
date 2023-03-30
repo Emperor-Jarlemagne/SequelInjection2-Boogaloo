@@ -2,7 +2,7 @@
 FROM node:14.18.1
 
 # Set the working directory to /app
-WORKDIR /app
+WORKDIR /portfoliosite/portfoliosite
 
 # Copy the package.json and package-lock.json files to the container
 COPY package*.json ./
@@ -13,8 +13,8 @@ RUN npm install
 # Copy the rest of your application files to the container
 COPY . .
 
-RUN groupadd -r myuser && useradd -r -g myuser myuser
-USER myuser
+#RUN groupadd -r myuser && useradd -r -g myuser myuser
+#USER myuser
 
 # Expose port 8080
 EXPOSE 8080
