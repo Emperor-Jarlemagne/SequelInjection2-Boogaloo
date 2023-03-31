@@ -8,27 +8,27 @@ const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
   const Element = Scroll.Element
   const elementRef = useRef(null)
+  const currentElementRef = useRef(null)
 
   useEffect(() => {
-    let currentElementRef = elementRef.current
-    currentElementRef = Element('home')
-    return () => {
-      currentElementRef.destroy()
-    };
-  }, [Element])
+    const scrollElement = new Element()
+    scrollElement.id = 'home'
+    const currentRef = currentElementRef.current
+    if (currentRef) {
+      currentRef.scrollEvent = () => {}
+      currentRef.register(scrollElement)
+      return () => {
+        currentRef.scrollEvent = undefined
+        currentRef.unregister(scrollElement)
+      }
+    }
+    }, [Element, currentElementRef])
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLetterClass('text-animate-hover')
     }, 500)
     return () => clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
-    const currentElementRef = elementRef.current
-    return () => {
-      currentElementRef.destroy()
-    }
   }, [])
 
  return (

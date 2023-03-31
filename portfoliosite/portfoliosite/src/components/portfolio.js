@@ -8,27 +8,27 @@ const Portfolio = () => {
   const project = data
   const Element = Scroll.Element
   const elementRef = useRef(null)
+  const currentElementRef = useRef(null)
 
   useEffect(() => {
-    let currentElementRef = elementRef.current
-    currentElementRef = Element('portfolio')
-    return () => {
-      currentElementRef.destroy()
-    };
-  }, [Element])
+    const scrollElement = new Element()
+    scrollElement.id = 'portfolio'
+    const currentRef = currentElementRef.current
+    if (currentRef) {
+      currentRef.scrollEvent = () => {}
+      currentRef.register(scrollElement)
+      return () => {
+        currentRef.scrollEvent = undefined
+        currentRef.unregister(scrollElement)
+      }
+    }
+    }, [Element, currentElementRef])
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLetterClass('text-animate-hover')
     }, 2000)
     return () => clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
-    const currentElementRef = elementRef.current
-    return () => {
-      currentElementRef.destroy()
-    }
   }, [])
 
   return (

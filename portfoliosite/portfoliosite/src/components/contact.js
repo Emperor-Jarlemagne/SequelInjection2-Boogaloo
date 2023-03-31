@@ -10,14 +10,21 @@ const Contact = () => {
   const form = useRef()
   const Element = Scroll.Element
   const elementRef = useRef(null)
+  const currentElementRef = useRef(null)
 
   useEffect(() => {
-    let currentElementRef = elementRef.current
-    currentElementRef = Element('contact')
-    return () => {
-      currentElementRef.destroy()
-    };
-  }, [Element])
+    const scrollElement = new Element()
+    scrollElement.id = 'contact'
+    const currentRef = currentElementRef.current
+    if (currentRef) {
+      currentRef.scrollEvent = () => {}
+      currentRef.register(scrollElement)
+      return () => {
+        currentRef.scrollEvent = undefined
+        currentRef.unregister(scrollElement)
+      }
+    }
+    }, [Element, currentElementRef])
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -26,13 +33,6 @@ const Contact = () => {
     return () => {
       clearTimeout(timeout)
     }
-    }, [])
-
-    useEffect(() => {
-      const currentElementRef = elementRef.current
-      return () => {
-        currentElementRef.destroy()
-      }
     }, [])
 
   const sendEmail = (e) => {

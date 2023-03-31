@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faHome,
@@ -16,35 +16,56 @@ const Navbar = () => {
     const handleClick = () => setNav(!nav)
     const scroller = Scroll.scroller
     const navigate = useNavigate()
-
+    const elementIdRef = useRef(null)
+/*
   const scrollToElement = async (elementId) => {
     try {
       await navigate("/" + elementId)
       console.log('Scrolling to ' + elementId)
-      await scroller.scrollTo(`#${elementId}`, {
+      setTimeout(() => {
+      console.log(`#${elementId}:`, document.getElementById(elementId))
+      scroller.scrollTo(`#${elementId}`, {
         duration: 500,
         spy: true,
         smooth: true,
-        offset: -75,
+        offset: 50,
       })
+    }, 1000)
     } catch (error) {
       console.log(error)
     }
+  } */
+  const scrollToElement = (elementId) => {
+    navigate("/" + elementId)
+    elementIdRef.current = elementId
   }
 
   useEffect(() => {
+    const elementId = elementIdRef.current
+    if (elementId) {
+      scroller.scrollTo(`#${elementId}`, {
+        duration: 500,
+        spy: true,
+        smooth: true,
+        offset: 50,
+      })
+    }
+  }, [elementIdRef, scroller])
+
+
+  useEffect(() => {
     const cleanup = () => {
-      if (typeof scroller.destory === 'function') {
+      if (typeof scroller.destroy === 'function') {
         scroller.destroy()
       }
     }
     return cleanup
-  },)
+  })
 
   return (
       <div id="navbar" className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#db7b48] text-gray-300">
         <NavLink to="/">
-          <img src={'./assets/content/8BitJari.png'} style={{ width: '40px'}} alt="It's Me!" />
+          <img src={'./assets/8BitJari.png'} style={{ width: '40px'}} alt="It's Me!" />
         </NavLink>
 
     {/* Main Menu */}
@@ -125,7 +146,7 @@ const Navbar = () => {
               className="flex justify-between items-center w-full text-[#8892b0]"
               href="https://rerouting.tech"
             >
-              <img src={'./assets/favicon/favicon-32x32.png'} width="24" alt="rerouting" />
+              <img src={'./assets/favicon-32x32.png'} width="24" alt="rerouting" />
             </a>
           </li>
         </ul>
