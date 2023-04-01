@@ -22,7 +22,7 @@ export const data=[
     },
     {
         id:4,
-        name:"React JS Application",
+        name:"React Single Page Application",
         image:"./assets/portfolio-main.png",
         github:"https://github.com/Emperor-Jarlemagne/SequelInjection2-Boogaloo",
         live:"https://emperor-jarlemagne.github.io/SequelInjection2-Boogaloo/",

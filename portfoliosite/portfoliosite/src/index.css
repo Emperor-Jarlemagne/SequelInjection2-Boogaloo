@@ -66,13 +66,18 @@ h1 span {
   
   .text-animate-hover {
     transform: translateY(0) rotate(360deg);
+    display: inline-block;
     opacity: 1;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    color: #53225a;
+    color: #53225a; /* text color initially */
+    min-width: 10px;
   }
 
   .text-animate-hover:hover {
     transform: translateY(-0.2em);
+    color:rgba(219, 123, 72, 0.8); /* new text color on hover */
+    transform-origin: center;
+    animation: rubberBand 1s;
   }
 
   .stage-icon-cont {

@@ -84,20 +84,24 @@ const Contact = () => {
             I'm looking for a Junior Full Stack position at a company
             that has challenging and diverse projects.
           </p>
-          <div className="flex flex-col max-w-[600px] w-full mt-8">
+          <div className="flex flex-col max-w-lg w-full mt-8">
             <form ref={form} onSubmit={sendEmail} style={{outline: 'none'}}>
               <ul>
-                <li className="half">
-                  <input placeholder="Name" type="text" name="name" required style={{outline: 'none'}}/>
+                <li className="w-3/4">
+                  <input 
+                    placeholder="Name" 
+                    type="text" 
+                    name="name" 
+                    required 
+                    className="p-2 bg-gray-100 outline-none w-full"/>
                 </li>
-                <li className="half">
+                <li className="w-3/4">
                   <input
                     placeholder="Email"
                     type="email"
                     name="email"
-                    className="my-4 p-2 bg-[#ccd6f6]"
+                    className="my-4 p-2 bg-[#ccd6f6] outline-none w-full"
                     required
-                    style={{outline: 'none'}}
                   />
                 </li>
                 <li>
@@ -105,17 +109,17 @@ const Contact = () => {
                     placeholder="Subject"
                     type="text"
                     name="subject"
-                    className="my-4 p-2 bg-[#ccd6f6]"
+                    className="my-4 p-2 bg-[#ccd6f6] outline-none w-full md:w-7/8"
                     required
-                    style={{outline: 'none'}}
                   />
                 </li>
                 <li>
                   <textarea
                     placeholder="Message"
                     name="message"
-                    className="bg-[#ccd6f6] p-2"
+                    className="bg-[#ccd6f6] p-2 outline-none w-full md:w-7/8"
                     required
+                    rows="8"
                   ></textarea>
                 </li>
                 <li>

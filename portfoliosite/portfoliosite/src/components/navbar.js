@@ -51,7 +51,7 @@ const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
   return (
       <div id="navbar" className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#db7b48] text-gray-300">
         <NavLink to="/">
-          <img src={'./assets/8BitJari.png'} style={{ width: '40px'}} alt="It's Me!" />
+          <img src={'/assets/8BitJari.jpg'} style={{ width: '40px'}} alt="It's Me!" />
         </NavLink>
 
     {/* Main Menu */}
@@ -79,7 +79,7 @@ const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
         </ul>
 
       {/* Hamburger */}
-      <div onClick={handleClick} className='md:hidden z-20 cursor-pointer'>
+      <div onClick={handleClick} className='md:hidden z-20 cursor-pointer text-3xl'>
         {!nav ? <FaBars /> : <FaTimes />}
       </div>
 
@@ -115,6 +115,7 @@ const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
             <a
               className="flex justify-between items-center w-full text-gray-300"
               href="https://www.linkedin.com/in/jari-sv-salminen/"
+              target="_blank" rel="noopener noreferrer"
             >
               <FaLinkedin size={50} color="#8892b0" />
             </a>
@@ -123,6 +124,7 @@ const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
             <a
               className="flex justify-between items-center w-full text-gray-300"
               href="https://github.com/Emperor-Jarlemagne"
+              target="_blank" rel="noopener noreferrer"
             >
               <FaGithub size={50} color="#8892b0" />
             </a>
@@ -131,6 +133,7 @@ const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
             <a
               className="flex justify-between items-center w-full text-[#8892b0]"
               href="https://rerouting.tech"
+              target="_blank" rel="noopener noreferrer"
             >
               <img src={'./assets/favicon-32x32.png'} width="24" alt="rerouting" />
             </a>
