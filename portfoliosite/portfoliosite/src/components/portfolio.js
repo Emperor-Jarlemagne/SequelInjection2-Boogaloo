@@ -1,12 +1,11 @@
-import { useEffect, useState, useRef } from 'react'
-import AnimatedLetters from './letters'
+import { useEffect, useRef } from 'react'
 import { data } from '../portfolio/examples'
-import * as Scroll from 'react-scroll'
+//import * as Scroll from 'react-scroll'
+import { Element } from 'react-scroll'
 
 const Portfolio = () => {
-  const [letterClass, setLetterClass] = useState('text-animate')
   const project = data
-  const Element = Scroll.Element
+//  const Element = Scroll.Element
   const elementRef = useRef(null)
   const currentElementRef = useRef(null)
 
@@ -22,18 +21,11 @@ const Portfolio = () => {
         currentRef.unregister(scrollElement)
       }
     }
-    }, [Element, currentElementRef])
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLetterClass('text-animate-hover')
-    }, 2000)
-    return () => clearTimeout(timer)
-  }, [])
+    }, [currentElementRef])
 
   return (
     <>
-      <Element ref={elementRef} id='portfolio' name='portfolio' className='w-full md:h-screen bg-[#fffdf0] text-[#53225a]'>
+      <Element ref={elementRef} id='portfolio' name='portfolio' className='w-full md:h-full bg-[#fffdf0] text-[#53225a] pt-16'>
       <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
         <div className='pb-8'>
           <p className='text-4xl font-bold inline border-b-4 text-gray-300 border-[#db7b48]'>
@@ -42,20 +34,12 @@ const Portfolio = () => {
         </div>
         <div className="text-zone">
           <h1>
-            <AnimatedLetters
-              letterClass={letterClass}
-              strArray={'Portfolio'.split('')}
-              idx={15}
-            />
-            <br />
+            Portfolio
           </h1>
-          <p>
-          Check out some of my recent work
-          </p>
         </div>
 {/* container for projects */}
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          
+
 {/* Grid Item */}
           {project.map((item, index) => (
   <div

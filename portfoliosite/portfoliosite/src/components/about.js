@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import {
   faCss3,
   faGitAlt,
@@ -10,13 +10,12 @@ import {
   faWordpress,
   faMdb,
 } from '@fortawesome/free-brands-svg-icons'
-import AnimatedLetters from './letters'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as Scroll from 'react-scroll'
+//import * as Scroll from 'react-scroll'
+import { Element } from 'react-scroll'
 
-const About = () => {
-  const [letterClass, setLetterClass] = useState('text-animate')
-  const Element = Scroll.Element
+const About = ({ isMobileOpen }) => {
+//  const Element = Scroll.Element
   const elementRef = useRef(null)
   const currentElementRef = useRef(null)
 
@@ -32,18 +31,11 @@ const About = () => {
         currentRef.unregister(scrollElement)
       }
     }
-    }, [Element, currentElementRef])
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLetterClass('text-animate-hover')
-    }, 2000)
-    return () => clearTimeout(timer)
-  }, [])
+    }, [currentElementRef])
 
   return (
     <>
-      <Element ref={elementRef} id='about' name='about' className="w-full h-screen bg-[#fffdf0] text-[#53225a]">
+      <Element ref={elementRef} id='about' name='about' className="w-full h-screen bg-[#fffdf0] text-[#53225a] pt-16">
         <div className='flex flex-col justify-center items-center w-full h-full'>
         <div className='max-w-[1000px] w-full grid grid-cols-2 gap-8'>
           <div className='sm:text-right pb-8 pl-4'>
@@ -51,12 +43,6 @@ const About = () => {
               About Me
             </p>
           <h1 className="my-4">
-            <AnimatedLetters
-              letterClass={letterClass}
-              strArray={'THE RUNDOWN'.split('')}
-              idx={15}
-              style={{ color: "#ccc", fontWeight: "bold" }}
-            />
           </h1>
           <p>
             I'm a Jr. Full Stack Developer!
@@ -75,10 +61,14 @@ const About = () => {
           MongoDb, Postgresql, SQLite
           </p>
           <p>
+            WordPress, Elementor, and Divi
+          </p>
+          <p>
             I'm in love with learning, new languages, and new technologies.
           </p>
         </div>
 
+    {!isMobileOpen && 
         <div className="stage-icon-cont">
           <div className="iconspinner">
             <div className="icon1">
@@ -110,11 +100,11 @@ const About = () => {
             </div>
           </div>
           </div>
+          }
           </div>
         </div>
       </Element>
     </>
   )
 }
-
 export default About

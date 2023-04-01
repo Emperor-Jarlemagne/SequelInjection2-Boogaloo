@@ -1,14 +1,13 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import emailjs from 'emailjs-com'
-import AnimatedLetters from './letters'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import * as Scroll from 'react-scroll'
+//import * as Scroll from 'react-scroll'
+import { Element } from 'react-scroll'
 
 const Contact = () => {
-  const [letterClass, setLetterClass] = useState('text-animate')
   const form = useRef()
-  const Element = Scroll.Element
+//  const Element = Scroll.Element
   const elementRef = useRef(null)
   const currentElementRef = useRef(null)
 
@@ -24,16 +23,7 @@ const Contact = () => {
         currentRef.unregister(scrollElement)
       }
     }
-    }, [Element, currentElementRef])
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLetterClass('text-animate-hover')
-    }, 500)
-    return () => {
-      clearTimeout(timeout)
-    }
-    }, [])
+    }, [currentElementRef])
 
   const sendEmail = (e) => {
     e.preventDefault()
@@ -86,17 +76,10 @@ const Contact = () => {
   }
 
   return (
-    <Element ref={elementRef} id="contact" name="name" className="w-full h-screen flex justify-center items-center p-4 bg-[#fffdf0]">
-      <div>
+    <Element ref={elementRef} id="contact" name="name" className="w-full h-full flex justify-center items-center p-4 bg-[#fffdf0]">
+      <div className="contact-container">
         <div className="ml-20 mr-10">
-          <h1>
-            <AnimatedLetters
-              letterClass={letterClass}
-              strArray={'Contact Me'.split('')}
-              idx={15}
-            />
-          </h1>
-          <p className="text-4xl font-bold inline border-b-4 border-[#db7b48] text-[#53225a] leading-4">
+          <p className="text-3xl font-bold inline border-b-4 border-[#db7b48] text-[#53225a] leading-3">
             If you would like to get in contact, please do! <br />
             I'm looking for a Junior Full Stack position at a company
             that has challenging and diverse projects.

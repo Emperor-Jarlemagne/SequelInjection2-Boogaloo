@@ -30,18 +30,10 @@
 h1 span {
     line-height: 1.25;
   }
-/*
-  .background {
-    background-image: url('./assets/content/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #fffdf0;
-     linear-gradient with a semi-transparent blue color 
-    background-image: linear-gradient(rgba(255, 253, 240, 0.8), rgba(255, 253, 240, 0.8)), url('./assets/content/background.jpg');
-  } 
-  */
 
+.contact-container {
+  margin-top: 10em;
+}
 
 .font-montserrat-subrayada {
     font-family: 'Montserrat Subrayada', sans-serif;

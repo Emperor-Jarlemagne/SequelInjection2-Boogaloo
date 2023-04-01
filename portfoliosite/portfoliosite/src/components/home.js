@@ -2,11 +2,12 @@ import { useEffect, useState, useRef} from 'react'
 import { Link as LinkRouter } from 'react-router-dom'
 import AnimatedLetters from './letters'
 import { HiArrowNarrowRight } from 'react-icons/hi'
-import * as Scroll from 'react-scroll'
+//import * as Scroll from 'react-scroll'
+import { Element } from 'react-scroll'
 
 const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
-  const Element = Scroll.Element
+//  const Element = Scroll.Element
   const elementRef = useRef(null)
   const currentElementRef = useRef(null)
 
@@ -22,7 +23,7 @@ const Home = () => {
         currentRef.unregister(scrollElement)
       }
     }
-    }, [Element, currentElementRef])
+    }, [currentElementRef])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -47,11 +48,6 @@ const Home = () => {
               idx={15}
             />
             <br />
-            <AnimatedLetters
-              letterClass={letterClass}
-              strArray={'Junior Full Stack Developer'.split('')}
-              idx={22}
-            />
     </h1>
     <h2 className="text-4xl sm:text-7xl font-bold text-[#8892b0] mb-6">
       This is my portfolio page!

@@ -9,32 +9,18 @@ import {
 import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { Link as NavLink, useNavigate } from 'react-router-dom'
 import { Link as ScrollLink } from 'react-scroll'
-import * as Scroll from 'react-scroll'
+import { scroller } from 'react-scroll'
 
-const Navbar = () => {
+const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
     const [nav, setNav] = useState(false)
-    const handleClick = () => setNav(!nav)
-    const scroller = Scroll.scroller
-    const navigate = useNavigate()
-    const elementIdRef = useRef(null)
-/*
-  const scrollToElement = async (elementId) => {
-    try {
-      await navigate("/" + elementId)
-      console.log('Scrolling to ' + elementId)
-      setTimeout(() => {
-      console.log(`#${elementId}:`, document.getElementById(elementId))
-      scroller.scrollTo(`#${elementId}`, {
-        duration: 500,
-        spy: true,
-        smooth: true,
-        offset: 50,
-      })
-    }, 1000)
-    } catch (error) {
-      console.log(error)
+    const handleClick = () => {
+      setNav(!nav)
+      setIsMobileOpen(!isMobileOpen)
     }
-  } */
+    const navigate = useNavigate()
+//    const scroller = Scroll.scroller
+    const elementIdRef = useRef("")
+
   const scrollToElement = (elementId) => {
     navigate("/" + elementId)
     elementIdRef.current = elementId
@@ -44,13 +30,13 @@ const Navbar = () => {
     const elementId = elementIdRef.current
     if (elementId) {
       scroller.scrollTo(`#${elementId}`, {
-        duration: 500,
+        duration: 1500,
         spy: true,
         smooth: true,
-        offset: 50,
+        offset: -75,
       })
     }
-  }, [elementIdRef, scroller])
+  }, []) 
 
 
   useEffect(() => {
@@ -93,13 +79,13 @@ const Navbar = () => {
         </ul>
 
       {/* Hamburger */}
-      <div onClick={handleClick} className='md:hidden z-10'>
+      <div onClick={handleClick} className='md:hidden z-20 cursor-pointer'>
         {!nav ? <FaBars /> : <FaTimes />}
       </div>
 
       {/* Mobile menu */}
       <ul className={ !nav ? 'hidden'
-            : 'absolute top-0 left-0 w-full h-screen bg-[#fffdf0] flex flex-col justify-center items-center' }>
+            : 'absolute top-0 left-0 w-full h-screen bg-[#fffdf0] flex flex-col justify-center items-center cursor-pointer z-10' }>
         <li className='py-6 text-4xl'>
           <NavLink onClick={handleClick} to='home'>
           <FontAwesomeIcon icon={faHome} color="#53225a" />
