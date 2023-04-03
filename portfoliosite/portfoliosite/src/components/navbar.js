@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faHome,
@@ -10,6 +10,7 @@ import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { Link as NavLink, useNavigate } from 'react-router-dom'
 import { Link as ScrollLink } from 'react-scroll'
 import { scroller } from 'react-scroll'
+import PropTypes from "prop-types"
 
 const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
     const [nav, setNav] = useState(false)
@@ -18,7 +19,6 @@ const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
       setIsMobileOpen(!isMobileOpen)
     }
     const navigate = useNavigate()
-//    const scroller = Scroll.scroller
     const elementIdRef = useRef("")
 
   const scrollToElement = (elementId) => {
@@ -86,24 +86,28 @@ const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
       {/* Mobile menu */}
       <ul className={ !nav ? 'hidden'
             : 'absolute top-0 left-0 w-full h-screen bg-[#fffdf0] flex flex-col justify-center items-center cursor-pointer z-10' }>
-        <li className='py-6 text-4xl'>
+        <li className='py-6 text-4xl text-[#53225a]'>
           <NavLink onClick={handleClick} to='home'>
-          <FontAwesomeIcon icon={faHome} color="#53225a" />
+          <FontAwesomeIcon icon={faHome} color="#53225a" className="mr-4" />
+          Home
           </NavLink>
         </li>
-        <li className='py-6 text-4xl'>
+        <li className='py-6 text-4xl text-[#53225a]'>
           <NavLink onClick={handleClick} to='about'>
-          <FontAwesomeIcon icon={faUser} color="#53225a" />
+          <FontAwesomeIcon icon={faUser} color="#53225a" className="mr-4"/>
+          About
           </NavLink>
         </li>
-        <li className='py-6 text-4xl'>
+        <li className='py-6 text-4xl text-[#53225a]'>
           <NavLink onClick={handleClick} to='portfolio'>
-          <FontAwesomeIcon icon={faScrewdriverWrench} color="#53225a" />
+          <FontAwesomeIcon icon={faScrewdriverWrench} color="#53225a" className="mr-4"/>
+          Portfolio
           </NavLink>
         </li>
-        <li className='py-6 text-4xl'>
+        <li className='py-6 text-4xl text-[#53225a]'>
           <NavLink onClick={handleClick} to='contact'>
-          <FontAwesomeIcon icon={faEnvelope} color="#53225a" />
+          <FontAwesomeIcon icon={faEnvelope} color="#53225a" className="mr-4"/>
+          Contact
           </NavLink>
         </li>
     </ul>
@@ -142,5 +146,9 @@ const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
         </div>
       </div>
   )
+}
+Navbar.propTypes = {
+  isMobileOpen: PropTypes.bool.isRequired,
+  setIsMobileOpen: PropTypes.func.isRequired,
 }
 export default Navbar

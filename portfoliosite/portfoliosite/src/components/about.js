@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import {
   faCss3,
   faGitAlt,
@@ -11,11 +11,10 @@ import {
   faMdb,
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import * as Scroll from 'react-scroll'
 import { Element } from 'react-scroll'
+import PropTypes from 'prop-types'
 
 const About = ({ isMobileOpen }) => {
-//  const Element = Scroll.Element
   const elementRef = useRef(null)
   const currentElementRef = useRef(null)
 
@@ -45,10 +44,10 @@ const About = ({ isMobileOpen }) => {
           <h1 className="my-4">
           </h1>
           <p>
-            I'm a Jr. Full Stack Developer!
+            I&apos;m a Jr. Full Stack Developer!
           </p>
           <p>
-            I've worked with many different technologies, including:
+            I&apos;ve worked with many different technologies, including:
           <br />
             Html/CSS/Vanilla JS/ReactJS/NodeJS/ExpressJS
           <br />
@@ -64,7 +63,7 @@ const About = ({ isMobileOpen }) => {
             WordPress, Elementor, and Divi
           </p>
           <p>
-            I'm in love with learning, new languages, and new technologies.
+            I&apos;m in love with learning, new languages, and new technologies.
           </p>
         </div>
 
@@ -106,5 +105,8 @@ const About = ({ isMobileOpen }) => {
       </Element>
     </>
   )
+}
+About.propTypes = {
+  isMobileOpen: PropTypes.bool.isRequired
 }
 export default About

@@ -1,13 +1,11 @@
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import emailjs from 'emailjs-com'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-//import * as Scroll from 'react-scroll'
 import { Element } from 'react-scroll'
 
 const Contact = () => {
   const form = useRef()
-//  const Element = Scroll.Element
   const elementRef = useRef(null)
   const currentElementRef = useRef(null)
 
@@ -30,7 +28,9 @@ const Contact = () => {
 
     emailjs
     .send(
+        // eslint-disable-next-line no-undef
         process.env.REACT_APP_EMAIL_SERVICE_ID,
+        // eslint-disable-next-line no-undef
         process.env.REACT_APP_TEMPLATE_ID,
         {
           name: e.target.name.value,
@@ -38,7 +38,8 @@ const Contact = () => {
           subject: e.target.subject.value,
           message: e.target.message.value,
         },
-        process.env.REACT_APP_PUBLIC_KEY
+        // eslint-disable-next-line no-undef
+        process.env.REACT_APP_USER_ID
       )
       .then(
         () => {
@@ -81,7 +82,7 @@ const Contact = () => {
         <div className="ml-20 mr-10">
           <p className="text-3xl font-bold inline border-b-4 border-[#db7b48] text-[#53225a] leading-3">
             If you would like to get in contact, please do! <br />
-            I'm looking for a Junior Full Stack position at a company
+            I&apos;m looking for a Junior Full Stack position at a company
             that has challenging and diverse projects.
           </p>
           <div className="flex flex-col max-w-lg w-full mt-8">

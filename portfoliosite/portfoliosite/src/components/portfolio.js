@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { data } from '../portfolio/examples'
 //import * as Scroll from 'react-scroll'
 import { Element } from 'react-scroll'

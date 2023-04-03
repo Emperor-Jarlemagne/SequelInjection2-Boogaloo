@@ -1,3 +1,5 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const AnimatedLetters = ({ letterClass, strArray, idx }) => {
   return (
@@ -10,4 +12,10 @@ const AnimatedLetters = ({ letterClass, strArray, idx }) => {
     </span>
   )
 }
+AnimatedLetters.propTypes = {
+  letterClass: PropTypes.string.isRequired,
+  strArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+  idx: PropTypes.number.isRequired
+}
+
 export default AnimatedLetters
