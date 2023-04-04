@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {
   faCss3,
   faGitAlt,
@@ -14,8 +14,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
 import { motion } from 'framer-motion'
 import pageVariants from './routetransitions'
+import AnimatedLetters from './letters'
 
 const About = ({ isMobileOpen }) => {
+  const [letterClass, setLetterClass] = useState('text-animate')
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLetterClass('text-animate-hover')
+    }, 500)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
       <motion.div 
@@ -29,11 +38,13 @@ const About = ({ isMobileOpen }) => {
         exit="exit">
         <div className='flex flex-col justify-center items-center w-full h-full'>
         <div className='max-w-[1000px] w-full grid grid-cols-2 gap-8'>
-          <div className='sm:text-right pb-8 pl-4'>
-            <p className='text-4xl font-bold inline border-b-4 border-[#8892b0]'>
-              About Me
-            </p>
-          <h1 className="my-4">
+          <div className='sm:text-right pb-8 pl-4 leading-3'>
+            <h1 className='text-3xl sm:text-5xl font-bold inline border-b-4 border-[#8892b0]'>
+              <AnimatedLetters
+                  letterClass={letterClass}
+                  strArray={'About Me'.split('')}
+                  idx={15}
+                />
           </h1>
           <p>
             I&apos;m a Jr. Full Stack Developer!

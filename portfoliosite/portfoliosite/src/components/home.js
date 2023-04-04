@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link as NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import AnimatedLetters from './letters'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 import PropTypes from 'prop-types'
@@ -29,11 +29,11 @@ const Home = ({ isMobileOpen }) => {
     {/* Main Container */}
     {!isMobileOpen && 
     <div className='max-w-[1000px] ml-20 mr-10 px-8 flex flex-col justify-center h-full text-right'>
-    <h1 className="text-4xl sm:text-7xl font-bold text-[#ccd6f6]">
-    <span className={letterClass}>H</span>
-            <span className={`${letterClass} _12`}>i, </span>
-            <span className={`${letterClass} _13`}>I</span>
-            <span className={`${letterClass} _14`}>&apos;m</span>
+    <h1 className="text-5xl sm:text-8xl font-bold text-[#53225a]">
+        <span className={`${letterClass} text-3xl sm:text-5xl`}>H</span>
+        <span className={`${letterClass} text-3xl sm:text-5xl _12`}>i,&nbsp;</span>
+        <span className={`${letterClass} text-3xl sm:text-5xl _13`}>I</span>
+        <span className={`${letterClass} text-3xl sm:text-5xl _14`}>&apos;m</span>
             <br />
             <AnimatedLetters
               letterClass={letterClass}
@@ -42,17 +42,17 @@ const Home = ({ isMobileOpen }) => {
             />
             <br />
     </h1>
-    <h2 className="text-4xl sm:text-7xl font-bold text-[#8892b0] mb-6">
+    <h3 className="text-3xl sm:text-5xl font-bold text-[#53225a] mb-6">
       This is my portfolio page!
-    </h2>
-    <NavLink 
+    </h3>
+    <Link 
     to="contact" 
     className="text-[#8892b0] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#db7b48] hover:border-[#db7b48] hover:text-[#53225a]">
       CONTACT ME
     <span className='group-hover:rotate-90 duration-300'>
     <HiArrowNarrowRight className='ml-3 ' />
     </span>
-    </NavLink>
+    </Link>
     </div>
     }
   </motion.div>

@@ -1,11 +1,21 @@
-import React, { useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import emailjs from 'emailjs-com'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { motion } from 'framer-motion'
 import pageVariants from './routetransitions'
+import AnimatedLetters from './letters'
+import { HiArrowNarrowRight } from 'react-icons/hi'
 
 const Contact = () => {
+  const [letterClass, setLetterClass] = useState('text-animate')
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLetterClass('text-animate-hover')
+    }, 500)
+    return () => clearTimeout(timer)
+  }, [])
   const form = useRef()
   const sendEmail = (e) => {
     e.preventDefault()
@@ -65,14 +75,22 @@ const Contact = () => {
       id="contact" 
       name="contact" 
       key="contact"
-      className="w-full h-full flex justify-center items-center p-4 bg-[#fffdf0]"
+      className="w-full h-full bg-[#fffdf0] pt-16"
       variants={pageVariants.RouteTransition}
       initial="initial"
       animate="animate"
       exit="exit">
-      <div className="contact-container">
-        <div className="ml-20 mr-10">
-          <p className="text-3xl font-bold inline border-b-4 border-[#db7b48] text-[#53225a] leading-3">
+      <div className="ml-40 mr-20 mt-8 flex justify-center items-center">
+        <div className="max-w-[1000px] w-full">
+        <h1 className='text-3xl sm:text-5xl font-bold inline border-b-4 border-[#8892b0]'>
+              <AnimatedLetters
+                  letterClass={letterClass}
+                  strArray={'Contact'.split('')}
+                  idx={15}
+                />
+          </h1>
+          <br />
+          <p className="text-3xl font-bold text-[#53225a] leading-3">
             If you would like to get in contact, please do! <br />
             I&apos;m looking for a Junior Full Stack position at a company
             that has challenging and diverse projects.
@@ -89,14 +107,14 @@ const Contact = () => {
                     type="text" 
                     name="name" 
                     required 
-                    className="p-2 bg-gray-100 outline-none w-full"/>
+                    className="my-2 p-2 bg-gray-100 outline-none w-full"/>
                 </li>
                 <li className="w-3/4">
                   <input
                     placeholder="Email"
                     type="email"
                     name="email"
-                    className="my-4 p-2 bg-[#ccd6f6] outline-none w-full"
+                    className="my-2 p-2 bg-[#ccd6f6] outline-none w-full"
                     required
                   />
                 </li>
@@ -105,7 +123,7 @@ const Contact = () => {
                     placeholder="Subject"
                     type="text"
                     name="subject"
-                    className="my-4 p-2 bg-[#ccd6f6] outline-none w-full md:w-7/8"
+                    className="my-2 p-2 bg-[#ccd6f6] outline-none w-full md:w-7/8"
                     required
                   />
                 </li>
@@ -113,15 +131,21 @@ const Contact = () => {
                   <textarea
                     placeholder="Message"
                     name="message"
-                    className="bg-[#ccd6f6] p-2 outline-none w-full md:w-7/8"
+                    className="my-2 p-2 bg-[#ccd6f6] outline-none w-full md:w-7/8"
                     required
                     rows="8"
                   ></textarea>
                 </li>
-                <li>
-                  <input type="submit" 
-                  className="text-[#53225a] border-2 hover:bg-[#db7b48] hover:border-[#db7b48] px-4 py-3 my-8 mx-auto flex items-center" 
-                  value="SEND" />
+                <li className="group">
+                  <button 
+                  type="submit" 
+                  className="px-4 py-2 my-8 w-[50%] mx-auto flex text-center items-center text-[#53225a] border-2 hover:bg-[#db7b48] hover:border-[#db7b48] hover:text-[#53225a]" 
+                  value="SEND">
+                    SUBMIT
+                    <span className='group-hover:rotate-90 duration-200'>
+                      <HiArrowNarrowRight className='ml-3 ' />
+                    </span>
+                  </button>
                 </li>
               </ul>
               <ToastContainer />
