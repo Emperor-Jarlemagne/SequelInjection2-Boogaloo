@@ -1,32 +1,22 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { data } from '../portfolio/examples'
-//import * as Scroll from 'react-scroll'
-import { Element } from 'react-scroll'
 import LazyLoad from 'react-lazy-load'
+import { motion } from 'framer-motion'
+import pageVariants from './routetransitions'
 
 const Portfolio = () => {
   const project = data
-//  const Element = Scroll.Element
-  const elementRef = useRef(null)
-  const currentElementRef = useRef(null)
-
-  useEffect(() => {
-    const scrollElement = new Element()
-    scrollElement.id = 'portfolio'
-    const currentRef = currentElementRef.current
-    if (currentRef) {
-      currentRef.scrollEvent = () => {}
-      currentRef.register(scrollElement)
-      return () => {
-        currentRef.scrollEvent = undefined
-        currentRef.unregister(scrollElement)
-      }
-    }
-    }, [currentElementRef])
 
   return (
-    <>
-      <Element ref={elementRef} id='portfolio' name='portfolio' className='w-full min-h-full bg-[#fffdf0] text-[#53225a] pt-16'>
+      <motion.div 
+      id='portfolio' 
+      name='portfolio' 
+      key="portfolio"
+      className='w-full min-h-full bg-[#fffdf0] text-[#53225a] pt-16'
+      variants={pageVariants.RouteTransition}
+      initial="initial"
+      animate="animate"
+      exit="exit">
       <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
         <div className='pb-8'>
           <p className='text-4xl font-bold inline border-b-4 text-gray-300 border-[#db7b48]'>
@@ -68,8 +58,7 @@ const Portfolio = () => {
 ))}
 </div>
 </div>
-</Element>
-  </>
+</motion.div>
    )
 }
 export default Portfolio

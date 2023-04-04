@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import {
   faCss3,
   faGitAlt,
@@ -11,30 +11,22 @@ import {
   faMdb,
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Element } from 'react-scroll'
 import PropTypes from 'prop-types'
+import { motion } from 'framer-motion'
+import pageVariants from './routetransitions'
 
 const About = ({ isMobileOpen }) => {
-  const elementRef = useRef(null)
-  const currentElementRef = useRef(null)
-
-  useEffect(() => {
-    const scrollElement = new Element()
-    scrollElement.id = 'about'
-    const currentRef = currentElementRef.current
-    if (currentRef) {
-      currentRef.scrollEvent = () => {}
-      currentRef.register(scrollElement)
-      return () => {
-        currentRef.scrollEvent = undefined
-        currentRef.unregister(scrollElement)
-      }
-    }
-    }, [currentElementRef])
 
   return (
-    <>
-      <Element ref={elementRef} id='about' name='about' className="w-full h-screen bg-[#fffdf0] text-[#53225a] pt-16">
+      <motion.div 
+        id='about' 
+        name='about' 
+        key="about"
+        className="w-full h-screen bg-[#fffdf0] text-[#53225a] pt-16"
+        variants={pageVariants.RouteTransition}
+        initial="initial"
+        animate="animate"
+        exit="exit">
         <div className='flex flex-col justify-center items-center w-full h-full'>
         <div className='max-w-[1000px] w-full grid grid-cols-2 gap-8'>
           <div className='sm:text-right pb-8 pl-4'>
@@ -102,8 +94,7 @@ const About = ({ isMobileOpen }) => {
           }
           </div>
         </div>
-      </Element>
-    </>
+      </motion.div>
   )
 }
 About.propTypes = {

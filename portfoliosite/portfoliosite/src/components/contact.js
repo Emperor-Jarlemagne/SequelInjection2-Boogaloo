@@ -1,28 +1,12 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import emailjs from 'emailjs-com'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { Element } from 'react-scroll'
+import { motion } from 'framer-motion'
+import pageVariants from './routetransitions'
 
 const Contact = () => {
   const form = useRef()
-  const elementRef = useRef(null)
-  const currentElementRef = useRef(null)
-
-  useEffect(() => {
-    const scrollElement = new Element()
-    scrollElement.id = 'contact'
-    const currentRef = currentElementRef.current
-    if (currentRef) {
-      currentRef.scrollEvent = () => {}
-      currentRef.register(scrollElement)
-      return () => {
-        currentRef.scrollEvent = undefined
-        currentRef.unregister(scrollElement)
-      }
-    }
-    }, [currentElementRef])
-
   const sendEmail = (e) => {
     e.preventDefault()
 
@@ -77,7 +61,15 @@ const Contact = () => {
   }
 
   return (
-    <Element ref={elementRef} id="contact" name="name" className="w-full h-full flex justify-center items-center p-4 bg-[#fffdf0]">
+    <motion.div 
+      id="contact" 
+      name="contact" 
+      key="contact"
+      className="w-full h-full flex justify-center items-center p-4 bg-[#fffdf0]"
+      variants={pageVariants.RouteTransition}
+      initial="initial"
+      animate="animate"
+      exit="exit">
       <div className="contact-container">
         <div className="ml-20 mr-10">
           <p className="text-3xl font-bold inline border-b-4 border-[#db7b48] text-[#53225a] leading-3">
@@ -86,7 +78,10 @@ const Contact = () => {
             that has challenging and diverse projects.
           </p>
           <div className="flex flex-col max-w-lg w-full mt-8">
-            <form ref={form} onSubmit={sendEmail} style={{outline: 'none'}}>
+            <form 
+            ref={form} 
+            onSubmit={sendEmail} 
+            style={{outline: 'none'}}>
               <ul>
                 <li className="w-3/4">
                   <input 
@@ -134,7 +129,7 @@ const Contact = () => {
           </div>
         </div>
     </div>
-    </Element>
+    </motion.div>
   )
 }
 export default Contact

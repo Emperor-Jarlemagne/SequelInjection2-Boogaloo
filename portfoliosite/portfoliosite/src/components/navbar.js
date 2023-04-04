@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faHome,
@@ -7,9 +7,7 @@ import {
   faScrewdriverWrench,
 } from '@fortawesome/free-solid-svg-icons'
 import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa'
-import { Link as NavLink, useNavigate } from 'react-router-dom'
-import { Link as ScrollLink } from 'react-scroll'
-import { scroller } from 'react-scroll'
+import { Link } from 'react-router-dom'
 import PropTypes from "prop-types"
 
 const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
@@ -18,63 +16,34 @@ const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
       setNav(!nav)
       setIsMobileOpen(!isMobileOpen)
     }
-    const navigate = useNavigate()
-    const elementIdRef = useRef("")
-
-  const scrollToElement = (elementId) => {
-    navigate("/" + elementId)
-    elementIdRef.current = elementId
-  }
-
-  useEffect(() => {
-    const elementId = elementIdRef.current
-    if (elementId) {
-      scroller.scrollTo(`#${elementId}`, {
-        duration: 1500,
-        spy: true,
-        smooth: true,
-        offset: -75,
-      })
-    }
-  }, []) 
-
-
-  useEffect(() => {
-    const cleanup = () => {
-      if (typeof scroller.destroy === 'function') {
-        scroller.destroy()
-      }
-    }
-    return cleanup
-  })
 
   return (
-      <div id="navbar" className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#db7b48] text-gray-300">
-        <NavLink to="/">
+      <div id="navbar" className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#db7b48] text-gray-300 z-40">
+        <Link to="/">
           <img src={'/assets/8BitJari.jpg'} style={{ width: '40px'}} alt="It's Me!" />
-        </NavLink>
+        </Link>
 
     {/* Main Menu */}
         <ul className="hidden md:flex">
         <li>
-          <ScrollLink to='/' onClick={() => scrollToElement('home')}>
+          <Link to='/' >
             Home
-          </ScrollLink>
+          </Link>
         </li>
         <li>
-          <ScrollLink to='about' onClick={() => scrollToElement('about')}>
+          <Link to='about' >
            About
-          </ScrollLink>
+          </Link>
         </li>
         <li>
-          <ScrollLink to='portfolio' onClick={() => scrollToElement('portfolio')}>
+          <Link to='portfolio' >
            Portfolio
-          </ScrollLink>
+          </Link>
         </li>
         <li>
-          <ScrollLink to='contact' onClick={() => scrollToElement('contact')}>
+          <Link to='contact' >
             Contact
-          </ScrollLink>
+          </Link>
           </li>
         </ul>
 
@@ -87,28 +56,28 @@ const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
       <ul className={ !nav ? 'hidden'
             : 'absolute top-0 left-0 w-full h-screen bg-[#fffdf0] flex flex-col justify-center items-center cursor-pointer z-10' }>
         <li className='py-6 text-4xl text-[#53225a]'>
-          <NavLink onClick={handleClick} to='home'>
+          <Link onClick={handleClick} to='home'>
           <FontAwesomeIcon icon={faHome} color="#53225a" className="mr-4" />
           Home
-          </NavLink>
+          </Link>
         </li>
         <li className='py-6 text-4xl text-[#53225a]'>
-          <NavLink onClick={handleClick} to='about'>
+          <Link onClick={handleClick} to='about'>
           <FontAwesomeIcon icon={faUser} color="#53225a" className="mr-4"/>
           About
-          </NavLink>
+          </Link>
         </li>
         <li className='py-6 text-4xl text-[#53225a]'>
-          <NavLink onClick={handleClick} to='portfolio'>
+          <Link onClick={handleClick} to='portfolio'>
           <FontAwesomeIcon icon={faScrewdriverWrench} color="#53225a" className="mr-4"/>
           Portfolio
-          </NavLink>
+          </Link>
         </li>
         <li className='py-6 text-4xl text-[#53225a]'>
-          <NavLink onClick={handleClick} to='contact'>
+          <Link onClick={handleClick} to='contact'>
           <FontAwesomeIcon icon={faEnvelope} color="#53225a" className="mr-4"/>
           Contact
-          </NavLink>
+          </Link>
         </li>
     </ul>
 

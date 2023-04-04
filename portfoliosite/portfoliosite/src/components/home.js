@@ -1,28 +1,13 @@
-import React, { useEffect, useState, useRef} from 'react'
-import { Link as LinkRouter } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link as NavLink } from 'react-router-dom'
 import AnimatedLetters from './letters'
 import { HiArrowNarrowRight } from 'react-icons/hi'
-import { Element } from 'react-scroll'
 import PropTypes from 'prop-types'
+import { motion } from 'framer-motion'
+import pageVariants from './routetransitions'
 
 const Home = ({ isMobileOpen }) => {
   const [letterClass, setLetterClass] = useState('text-animate')
-  const elementRef = useRef(null)
-  const currentElementRef = useRef(null)
-
-  useEffect(() => {
-    const scrollElement = new Element()
-    scrollElement.id = 'home'
-    const currentRef = currentElementRef.current
-    if (currentRef) {
-      currentRef.scrollEvent = () => {}
-      currentRef.register(scrollElement)
-      return () => {
-        currentRef.scrollEvent = undefined
-        currentRef.unregister(scrollElement)
-      }
-    }
-    }, [currentElementRef])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -32,7 +17,15 @@ const Home = ({ isMobileOpen }) => {
   }, [])
 
  return (
-  <Element ref={elementRef} id='home' name='home' className="w-full h-screen bg-[#fffdf0]">
+  <motion.div 
+    id='home' 
+    name='home' 
+    key="home"
+    className="w-full h-screen bg-[#fffdf0]"
+    variants={pageVariants.RouteTransition}
+    initial="initial"
+    animate="animate"
+    exit="exit">
     {/* Main Container */}
     {!isMobileOpen && 
     <div className='max-w-[1000px] ml-20 mr-10 px-8 flex flex-col justify-center h-full text-right'>
@@ -52,17 +45,17 @@ const Home = ({ isMobileOpen }) => {
     <h2 className="text-4xl sm:text-7xl font-bold text-[#8892b0] mb-6">
       This is my portfolio page!
     </h2>
-    <LinkRouter 
+    <NavLink 
     to="contact" 
     className="text-[#8892b0] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#db7b48] hover:border-[#db7b48] hover:text-[#53225a]">
       CONTACT ME
     <span className='group-hover:rotate-90 duration-300'>
     <HiArrowNarrowRight className='ml-3 ' />
     </span>
-    </LinkRouter>
+    </NavLink>
     </div>
     }
-  </Element>
+  </motion.div>
  )
 }
 Home.propTypes = {
