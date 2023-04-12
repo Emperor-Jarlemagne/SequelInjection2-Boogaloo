@@ -26,7 +26,7 @@ const Portfolio = () => {
       initial="initial"
       animate="animate"
       exit="exit">
-      <div className='py-12 px-4 ml-20 mr-10 p-4 flex flex-col justify-center min-h-screen'>
+      <div className='py-12 px-4 ml-10 md:ml-20 mr-10 p-4 flex flex-col justify-center min-h-screen'>
         <div className='sm:text-right pb-8 pt-6 leading-3'>
         <h1 className='text-3xl sm:text-5xl font-bold inline-flex border-b-4 border-[#8892b0] w-full'>
               <AnimatedLetters

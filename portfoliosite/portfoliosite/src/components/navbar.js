@@ -6,9 +6,10 @@ import {
   faEnvelope,
   faScrewdriverWrench,
 } from '@fortawesome/free-solid-svg-icons'
-import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa'
+import {FaGithub, FaLinkedin } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import PropTypes from "prop-types"
+import MenuButton from './menubutton'
 
 const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
     const [nav, setNav] = useState(false)
@@ -49,7 +50,7 @@ const Navbar = ({isMobileOpen, setIsMobileOpen }) => {
 
       {/* Hamburger */}
       <div onClick={handleClick} className='md:hidden z-20 cursor-pointer text-3xl'>
-        {!nav ? <FaBars /> : <FaTimes />}
+        <MenuButton isMobileOpen={isMobileOpen} color="#53225a"/>
       </div>
 
       {/* Mobile menu */}

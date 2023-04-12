@@ -28,7 +28,7 @@ const Home = ({ isMobileOpen }) => {
     exit="exit">
     {/* Main Container */}
     {!isMobileOpen && 
-    <div className='max-w-[1000px] ml-20 mr-10 px-8 flex flex-col justify-center h-full text-right'>
+    <div className='max-w-[1000px] mx-auto md:ml-20 mr-10 px-8 flex flex-col justify-center h-full text-right'>
     <h1 className="text-5xl sm:text-8xl font-bold text-[#53225a]">
         <span className={`${letterClass} text-3xl sm:text-5xl`}>H</span>
         <span className={`${letterClass} text-3xl sm:text-5xl _12`}>i,&nbsp;</span>

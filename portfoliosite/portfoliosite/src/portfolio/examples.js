@@ -6,16 +6,16 @@ export const data=[
         github:"https://github.com/Emperor-Jarlemagne/Rerouting-Website",
         live:"https://rerouting.tech",
     },
-    {
+/*    {
         id:2,
         name:"BlogList Application",
         image: "",
         github:"https://github.com/Emperor-Jarlemagne/fullstackoflettu/tree/main/part5/BlogListAppFrontEnd/bloglist-frontend",
         live:"https://github.com/Emperor-Jarlemagne/fullstackoflettu/tree/main/part4/BlogListApp",
-    },
+    }, */
     {
         id:3,
-        name:"Phonebook Application",
+        name:"Phonebook Application w/MongoDB",
         image:"./assets/phonebook-main.png",
         github:"https://github.com/Emperor-Jarlemagne/fullstackoflettu/tree/main/part3/phonebook-backend",
         live:"https://black-moon-1933.fly.dev/",

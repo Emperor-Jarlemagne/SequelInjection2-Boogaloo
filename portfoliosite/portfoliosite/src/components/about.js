@@ -31,21 +31,22 @@ const About = ({ isMobileOpen }) => {
         id='about' 
         name='about' 
         key="about"
-        className="w-full h-screen bg-[#fffdf0] text-[#53225a] pt-16"
+        className='w-full h-screen bg-[#fffdf0] text-[#53225a] pt-40 md:pt-20 flex flex-col justify-center items-center'
         variants={pageVariants.RouteTransition}
         initial="initial"
         animate="animate"
         exit="exit">
-        <div className='flex flex-col justify-center items-center w-full h-full'>
-        <div className='max-w-[1000px] w-full grid grid-cols-2 gap-8'>
-          <div className='sm:text-right pb-8 pl-4 leading-3'>
+        <div>
+        <div className='max-w-[1000px] w-full pt-60 md:pt-0 sm:mx-auto md:mx-5 md:flex md:flex-row md:items-center md:gap-10 md:justify-center'>
+          <div className='md:w-1/2 md:text-right sm:text-left mx-10 pb-8 md:pb-0 pr-8 md:pr-0 leading-3'>
             <h1 className='text-3xl sm:text-5xl font-bold inline border-b-4 border-[#8892b0]'>
-              <AnimatedLetters
-                  letterClass={letterClass}
-                  strArray={'About Me'.split('')}
-                  idx={15}
-                />
+            <AnimatedLetters
+                letterClass={letterClass}
+                strArray={'About Me'.split('')}
+                idx={15}
+              />
           </h1>
+          <div className="content-wrapper">
           <p>
             I&apos;m a Jr. Full Stack Developer!
           </p>
@@ -56,7 +57,7 @@ const About = ({ isMobileOpen }) => {
           <br />
             Python/Django/Flask
           <br />
-            Javascript/TypeScript/GraphQl
+            Javascript/TypeScript/GraphQl/Elixir
           <br />
             Git/Github
           <br />
@@ -68,10 +69,11 @@ const About = ({ isMobileOpen }) => {
           <p>
             I&apos;m in love with learning, new languages, and new technologies.
           </p>
+          </div>
         </div>
 
     {!isMobileOpen && 
-        <div className="stage-icon-cont">
+        <div className="stage-icon-cont md:w-1/2 md:mt-0 md:ml-8 sm:mx-auto flex justify-center items-center">
           <div className="iconspinner">
             <div className="icon1">
               <FontAwesomeIcon icon={faPython} color="#4B8BBE" size="6x"/>

@@ -80,7 +80,7 @@ const Contact = () => {
       initial="initial"
       animate="animate"
       exit="exit">
-      <div className="ml-40 mr-20 mt-8 flex justify-center items-center">
+      <div className="ml-10 md:ml-40 mr-20 mt-8 flex justify-center items-center">
         <div className="max-w-[1000px] w-full">
         <h1 className='text-3xl sm:text-5xl font-bold inline border-b-4 border-[#8892b0]'>
               <AnimatedLetters
