@@ -6,13 +6,13 @@ export const data=[
         github:"https://github.com/Emperor-Jarlemagne/Rerouting-Website",
         live:"https://rerouting.tech",
     },
-/*    {
+    {
         id:2,
         name:"BlogList Application",
-        image: "",
-        github:"https://github.com/Emperor-Jarlemagne/fullstackoflettu/tree/main/part5/BlogListAppFrontEnd/bloglist-frontend",
-        live:"https://github.com/Emperor-Jarlemagne/fullstackoflettu/tree/main/part4/BlogListApp",
-    }, */
+        image: "./assets/bloglistapp.png",
+        github:"https://github.com/Emperor-Jarlemagne/BlogListApp.",
+        live:"https://bloglistapp.fly.dev/",
+    }, 
     {
         id:3,
         name:"Phonebook Application w/MongoDB",
