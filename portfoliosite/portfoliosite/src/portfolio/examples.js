@@ -8,7 +8,7 @@ export const data=[
     },
     {
         id:2,
-        name:"BlogList Application",
+        name:"MERN (Mongo/Express/React/Node.js) BlogList Application",
         image: "./assets/bloglistapp.png",
         github:"https://github.com/Emperor-Jarlemagne/BlogListApp.",
         live:"https://bloglistapp.fly.dev/",
